@@ -28,6 +28,8 @@
 #define LVL_NOM		RPM_REGULATOR_CORNER_NORMAL
 #define LVL_HIGH	RPM_REGULATOR_CORNER_SUPER_TURBO
 
+static int opt_bin = 0;
+
 static struct hfpll_data hfpll_data __initdata = {
 	.mode_offset = 0x00,
 	.l_offset = 0x04,
@@ -257,6 +259,7 @@ static struct msm_bus_paths bw_level_tbl_v2[] __initdata = {
 	[6] = BW_MBPS(4912), /* At least 614 MHz on bus. */
 	[7] = BW_MBPS(6400), /* At least 800 MHz on bus. */
 	[8] = BW_MBPS(7448), /* At least 931 MHz on bus. */
+	[9] = BW_MBPS(8000), /* At least 1000 MHz on bus. */
 };
 
 static struct l2_level l2_freq_tbl_v2[] __initdata = {
@@ -1131,6 +1134,7 @@ static int __init acpuclk_8974_probe(struct platform_device *pdev)
 		acpuclk_8974_params.l2_freq_tbl = l2_freq_tbl_v2_elementalx;
 		acpuclk_8974_params.l2_freq_tbl_size = sizeof(l2_freq_tbl_v2_elementalx);
 	}
+
 	if (opt_bin == 2) {
 		acpuclk_8974_params.l2_freq_tbl = l2_freq_tbl_v2_ultra;
 		acpuclk_8974_params.l2_freq_tbl_size = sizeof(l2_freq_tbl_v2_ultra);
