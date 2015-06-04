@@ -138,6 +138,14 @@ config CPU_FREQ_DEFAULT_GOV_HYPER
 	  loading your cpufreq low-level hardware driver, using the
 	  'hyper' governor for latency-sensitive workloads.
 
+
+config CPU_FREQ_DEFAULT_GOV_IMPULSE
+        bool "impulse"
+        select CPU_FREQ_GOV_IMPULSE
+        help
+          Use the CPUFreq governor 'interactive' as default.
+
+
 config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
 	bool "intelliactive"
 	select CPU_FREQ_GOV_INTELLIACTIVE
@@ -426,11 +434,14 @@ config CPU_FREQ_GOV_BADASS_GPU_CONTROL
 	help
 	  'gpu_control' - This driver adds a new algo to save power
 
+
 config CPU_FREQ_GOV_BADASS_LOWBAT_POWERSAVE
 	tristate "'lowbat_powersave' power-efficiency badass algorithm"
 	depends on CPU_FREQ_GOV_BADASS
 	help
 	  'lowbat_powersave' - This driver adds a new algo to save power
+
+
 
 config CPU_FREQ_GOV_BADASS_ALLOW_BYPASS
 	tristate "Allows bypassing phases"
@@ -484,6 +495,16 @@ config CPU_FREQ_GOV_HYPER
 	  'hyper' - A tweaked "ondemand" based smart and smooth optimized governor!
 	
 	   If in doubt, say N.
+
+
+config CPU_FREQ_GOV_IMPULSE
+        tristate "'impulse' cpufreq policy governor"
+        help
+          'impulse' - This driver adds a dynamic cpufreq policy governor
+          designed for optimized balance between power and performance.
+
+          If in doubt, say N.
+
 
 config CPU_FREQ_GOV_INTELLIACTIVE
 	tristate "'intelliactive' cpufreq policy governor"
@@ -605,6 +626,7 @@ config CPU_FREQ_GOV_ONDEMAND
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
 config CPU_FREQ_GOV_ONDEMANDPLUS
 	tristate "'ondemandplus' cpufreq policy governor"
 	select CPU_FREQ_TABLE
